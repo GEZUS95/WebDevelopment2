@@ -41,8 +41,8 @@ export default {
       // use axios to delete the product
     },
     editProduct(id) {
-      alert("product not edited: " + id);
       // use the router to navigate to the editproduct route and pass the id
+      this.$router.push("/editproduct/" + id);
     },
   },
 };

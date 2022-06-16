@@ -2,24 +2,34 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home from './views/Home.vue';
+import store from '@/store';
+import Home from './components/Home.vue';
 import ProductList from './components/products/ProductList.vue';
-import CreateProduct from './components/products/CreateProduct.vue';
+import Login from '@/components/Login';
 import EditProduct from './components/products/EditProduct.vue';
+import axios from "axios";
+import Logout from "@/components/logout";
+import SingleView from "@/components/Recenties/SingleView";
+import BedrijvenSingleView from "@/components/bedrijven/SingleView";
+import BedrijvenOverzichtView from "@/components/bedrijven/BedrijvenOverzichtView";
+import Plaatsen from "@/components/Recenties/Plaatsen";
+import newAccount from "@/components/newAccount";
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
-
-import Bedrijven from './views/BedrijvenOverzichtView.vue'
-import Login from "@/views/login";
+axios.defaults.baseURL = 'http://localhost:8082/';
+axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
 
 const routes = [
-    { path: '/', component: Home },
     { path: '/products', component: ProductList },
-    { path: '/createproduct', component: CreateProduct },
     { path: '/editproduct/:id', component: EditProduct, props: true  },
-    { path: '/bedrijven', component: Bedrijven },
-    { path: '/login', component: Login }
+    { path: '/', component: Home },
+    { path: '/login', component: Login },
+    { path: '/logout', component: Logout },
+    { path: '/recenties/single/:id', component: SingleView, props: true  },
+    { path: '/recenties/plaatsen/:id', component: Plaatsen, props: true },
+    { path: '/bedrijven', component: BedrijvenOverzichtView },
+    { path: '/bedrijven/single/:id', component: BedrijvenSingleView, props: true },
+    { path: '/create-account', component: newAccount },
+
 ];
 
 const router = createRouter({
@@ -28,5 +38,6 @@ const router = createRouter({
 })
 
 const app = createApp(App);
+app.use(store);
 app.use(router);
 app.mount('#app');
