@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import axios from "@/axios-auth";
+import axios from "axios";
 
 export default {
   name: "Login",
@@ -51,22 +51,20 @@ export default {
     async login() {
       // await this.$store.dispatch('login', {username: this.username, password: this.password})
       await axios
-          .post('login', {username: this.username, password: this.password })
+          .post('login', {username: this.username, password: this.password})
           .then((res) => {
             const resdata = res.data.token
             this.$store.commit('SET_TOKEN', resdata)
-            console.log(resdata)
             console.log("TOKEN:")
-            console.log(this.$store.getters.getToken)
-            console.log("USER:")
-            console.log(this.$store.getters.getUser)
-          });
+            console.log(this.$store.getters.isLoggedIn)
+
+          })
       await axios
           .get('users/current')
           .then((res) => {
-                console.log(res.data)
                 const resdata = res.data.user
-                this.$store.dispatch('setUser', {resdata})
+                this.$store.commit('SET_USER', resdata)
+                console.log("USER:")
                 console.log(this.$store.getters.getUser)
               }
           );

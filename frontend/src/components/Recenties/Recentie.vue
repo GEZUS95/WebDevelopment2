@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import axios from "@/axios-auth";
+import axios from "axios";
 import {BForm, BButton, BFormGroup,BFormInput} from "bootstrap-vue-3";
 
 export default {
@@ -60,7 +60,7 @@ export default {
   mounted() {
     this.getBedrijf();
     this.getUser();
-    this.currentUser = this.$store.getters.getUser()
+    this.currentUser = this.$store.getters.getUser
   },
   methods: {
     getBedrijf() {

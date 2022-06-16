@@ -41,5 +41,3 @@ W
 'api/app/repositories/userrepository.php,4\5\45ad934388a033a88714c95e8f936bc46cf0d7e5
 P
  api/app/services/userservice.php,9\1\91bf326456e3c0318c50b1390d8a46e3fa86c443
-G
-api/app/models/user.php,b\0\b0f5997f7941ceb7b05c8d04da24d40d63e9d8a3

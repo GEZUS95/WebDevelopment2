@@ -11,7 +11,7 @@
 
 <script>
 import Recentie from '@/components/Recenties/Recentie'
-import axios from "@/axios-auth";
+import axios from "axios";
 
 export default {
   name: "Home",

@@ -17,6 +17,11 @@
 
         <li v-if="!this.user" class="nav-item">
           <!-- add a router link to the products page (don't use the a tag!) -->
+          <router-link to="/users/{{this.user['id']}}" class="nav-link" active-class="active">{{ this.user['name'] }}</router-link>
+        </li>
+
+        <li v-if="!this.user" class="nav-item">
+          <!-- add a router link to the products page (don't use the a tag!) -->
           <router-link to="/logout" class="nav-link" active-class="active">Logout</router-link>
         </li>
       </ul>

@@ -1,26 +1,27 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import axios from "axios";
 import { createRouter, createWebHistory } from 'vue-router'
+
+import {BootstrapVue3} from "bootstrap-vue-3";
+import Vuex from "vuex";
 
 import store from '@/store';
 import Home from './components/Home.vue';
-import ProductList from './components/products/ProductList.vue';
 import Login from '@/components/Login';
-import EditProduct from './components/products/EditProduct.vue';
-import axios from "axios";
 import Logout from "@/components/logout";
 import SingleView from "@/components/Recenties/SingleView";
 import BedrijvenSingleView from "@/components/bedrijven/SingleView";
 import BedrijvenOverzichtView from "@/components/bedrijven/BedrijvenOverzichtView";
 import Plaatsen from "@/components/Recenties/Plaatsen";
 import newAccount from "@/components/newAccount";
+import User from "@/components/user";
+import AllUsers from "@/components/admin/AllUsers";
 
 axios.defaults.baseURL = 'http://localhost:8082/';
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
 
 const routes = [
-    { path: '/products', component: ProductList },
-    { path: '/editproduct/:id', component: EditProduct, props: true  },
     { path: '/', component: Home },
     { path: '/login', component: Login },
     { path: '/logout', component: Logout },
@@ -29,6 +30,9 @@ const routes = [
     { path: '/bedrijven', component: BedrijvenOverzichtView },
     { path: '/bedrijven/single/:id', component: BedrijvenSingleView, props: true },
     { path: '/create-account', component: newAccount },
+    { path: '/users/:id', component: User, props: true },
+    { path: '/admin/users', component: AllUsers },
+    { path: '/admin/companys', component: AllUsers },
 
 ];
 
@@ -37,7 +41,9 @@ const router = createRouter({
     routes
 })
 
-const app = createApp(App);
-app.use(store);
-app.use(router);
-app.mount('#app');
+createApp(App)
+    .use(store)
+    .use(router)
+    .use(Vuex)
+    .use(BootstrapVue3)
+    .mount('#app');

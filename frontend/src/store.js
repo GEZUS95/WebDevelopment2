@@ -6,7 +6,7 @@ const getDefaultState = () => {
     return {
         token: '',
         user: Object
-    }
+    };
 };
 
 export default new Vuex.Store({

@@ -38,7 +38,7 @@ export default {
     }
   },
   mounted() {
-    this.currentUser = this.$store.getters.getUser()
+    this.currentUser = this.$store.getters.getUser
   },
   methods: {
     isCompany() {
