@@ -27,7 +27,9 @@ class UserService
 
     public function getOneById(int $id)
     {
-        return $this->repository->getOneById($id);
+        $user = $this->repository->getOneById($id);
+        $user->password = "";
+        return $user;
     }
 
     public function userExists($email)

@@ -25,8 +25,6 @@ M
 api/app/models/ReactieDTO.php,f\9\f9d5acca4b71fc2a33db2ebade501a6cba3db39f
 Z
 *api/app/controllers/recentiecontroller.php,1\a\1a4080ecf2dcabbc72117263540f2bad7c784961
-S
-#api/app/services/BedrijfService.php,1\b\1bc455b2d64facceabc0ed9db6de3864ef83248e
 [
 +api/app/repositories/recentieRepository.php,c\8\c88ac92d5b0bda191bce2bac55da17671145c8df
 T
@@ -71,8 +69,6 @@ V
 .frontend-les6-master/src/components/logout.vue,1\7\17afbda033b20d0ff790ab3c6b5bcaf21d5aa487
 Q
 !frontend-les6-master/src/store.js,e\d\ed39e6b02e2b78d6233ddd274c405f4ce0999260
-W
-'api/app/repositories/userrepository.php,4\5\45ad934388a033a88714c95e8f936bc46cf0d7e5
 V
 &frontend-les6-master/public/index.html,c\6\c6cb1d4855041df7b49100815bc260d11a5a8388
 l
@@ -87,7 +83,5 @@ J
 api/app/models/bedrijf.php,d\2\d282eaaa9d2df3d1da03c89253fbb7abdaf011fb
 O
 api/sql/FINAL_developmentdb.sql,5\b\5b66239ffb5d0905652b5e55dcd0fcd2abaac732
-Z
-*api/app/repositories/CompanyRepository.php,7\3\7317c74a5f047e4b33419da733b742309b4c43e8
 T
 $frontend-les6-master/babel.config.js,7\c\7cc6c152b5e6163d83f7eb3c40d7ddb8c236a51b

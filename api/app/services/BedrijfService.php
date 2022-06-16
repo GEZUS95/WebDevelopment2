@@ -26,7 +26,9 @@ class BedrijfService
 
     public function getOneById(int $id)
     {
-        return $this->repository->getOneById($id);
+        $comp = $this->repository->getOneById($id);
+        $comp->password = '';
+        return $comp;
     }
 
     public function bedrijfExists($email)

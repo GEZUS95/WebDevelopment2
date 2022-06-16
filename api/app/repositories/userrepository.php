@@ -64,10 +64,7 @@ class UserRepository extends Repository
             $stmt->execute();
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, User::class);
-            $user = $stmt->fetch();
-
-            $user->password = "";
-            return $user;
+            return $stmt->fetch();
 
         } catch (PDOException $e) {
             echo $e;
