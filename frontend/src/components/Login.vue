@@ -55,6 +55,7 @@ export default {
           .then((res) => {
             const resdata = res.data.token
             this.$store.commit('SET_TOKEN', resdata)
+            localStorage.setItem('token', resdata)
             console.log("TOKEN:")
             console.log(this.$store.getters.isLoggedIn)
 
@@ -64,6 +65,7 @@ export default {
           .then((res) => {
                 const resdata = res.data.user
                 this.$store.commit('SET_USER', resdata)
+                localStorage.setItem('user', resdata)
                 console.log("USER:")
                 console.log(this.$store.getters.getUser)
               }
