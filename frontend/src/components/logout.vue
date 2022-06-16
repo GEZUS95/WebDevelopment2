@@ -10,7 +10,6 @@ export default {
     logout() {
       this.$store.dispatch("logout")
       this.$router.push('/')
-      console.log(this.$store._actions)
     },
   },
   mounted() {

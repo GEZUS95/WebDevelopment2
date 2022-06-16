@@ -29,7 +29,6 @@ export default new Vuex.Store({
             state.user = user;
         },
         RESET: state => {
-            console.log('test reset')
             Object.assign(state, getDefaultState());
         }
     },
@@ -44,7 +43,6 @@ export default new Vuex.Store({
         },
         logout: ({ commit }) => {
             commit('RESET');
-            console.log('test')
             localStorage.removeItem('token')
             localStorage.removeItem('user')
             localStorage.clear();

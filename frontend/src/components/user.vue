@@ -5,6 +5,9 @@
       <p>email: {{ this.gebruiker['email'] }}</p>
       <p>role: {{ this.gebruiker['role'] }}</p>
       <p>tel: {{ this.gebruiker['phone'] }}</p>
+      <div class="bedrijf" v-if="gebruiker['role'] === 'Bedrijf'">
+        <p>beschrijving: {{ this.gebruiker['beschrijving'] }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -14,16 +17,16 @@ import axios from "axios";
 
 export default {
   name: "user",
-  props:{
-    id:String
+  props: {
+    id: String
   },
-  data(){
-    return{
+  data() {
+    return {
       gebruiker: {}
     }
   },
-  methods:{
-    getUser(){
+  methods: {
+    getUser() {
       axios
           .get('users/' + this.id)
           .then((res) => this.gebruiker = res.data)

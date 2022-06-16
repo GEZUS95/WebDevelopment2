@@ -26,7 +26,6 @@ export default {
           .get("recenties/" + this.id)
           .then((res) => { // eslint-disable-next-line vue/no-mutating-props
             this.recentie = res.data;
-            console.log(res)
           })
     },
   },

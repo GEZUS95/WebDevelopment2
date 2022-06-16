@@ -25,8 +25,6 @@ F
 api/docker-compose.yml,8\2\820a2a54ae2ca098022d8801d4df58a53bb51c73
 R
 "api/app/controllers/controller.php,6\b\6b1c029e635c3bc8edf2f0e30b5bc04730a749bd
-J
-api/app/models/bedrijf.php,d\2\d282eaaa9d2df3d1da03c89253fbb7abdaf011fb
 O
 api/sql/FINAL_developmentdb.sql,5\b\5b66239ffb5d0905652b5e55dcd0fcd2abaac732
 N

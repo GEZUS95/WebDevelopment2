@@ -63,9 +63,10 @@ export default {
       await axios
           .get('users/current')
           .then((res) => {
+            // todo: dit gaat niet helemaal lekker
                 const resdata = res.data.user
                 this.$store.commit('SET_USER', resdata)
-                localStorage.setItem('user', resdata)
+                localStorage.setItem('user', this.$store.getters.getUser)
                 console.log("USER:")
                 console.log(this.$store.getters.getUser)
               }

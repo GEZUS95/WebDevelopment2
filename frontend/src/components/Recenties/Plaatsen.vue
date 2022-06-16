@@ -87,7 +87,8 @@ export default {
   },
   mounted() {
     this.getBedrijf();
-    this.currentUser = this.$store.getters.getUser()
+    this.currentUser = this.$store.getters.getUser
+    console.log( this.currentUser.id)
   },
   methods: {
     getBedrijf() {
@@ -98,7 +99,7 @@ export default {
     onSubmit(){
       let json = {
         'bedrijfsId': this.bedrijf['id'],
-        'userId': this.currentUser['id'],
+        'userId': this.currentUser.id,
         'title': this.form.title,
         'beschrijving': this.form.beschrijving,
         'rating': this.form.rating

@@ -22,7 +22,6 @@ export default {
           .get('recenties')
           .then((res) => {
             this.recenties = res.data;
-            console.log(res.data)
           })
     }
   },

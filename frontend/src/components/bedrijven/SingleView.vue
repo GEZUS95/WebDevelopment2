@@ -13,7 +13,7 @@ export default {
   },
   components: {Bedrijf},
   props: {
-    id: Number,
+    id: String,
   },
   data(){
     return {
@@ -27,7 +27,6 @@ export default {
 
           .then((res) => { // eslint-disable-next-line vue/no-mutating-props
             this.bedrijf = res.data;
-            console.log(res)
           })
     }
   },

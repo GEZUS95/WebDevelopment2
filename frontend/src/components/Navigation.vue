@@ -10,17 +10,17 @@
           <!-- add a router link to the products page (don't use the a tag!) -->
           <router-link to="/bedrijven" class="nav-link" active-class="active">Bedrijven</router-link>
         </li>
-        <li v-if="!this.user" class="nav-item">
+        <li v-if="!this.$store.getters.isLoggedIn" class="nav-item">
           <!-- add a router link to the products page (don't use the a tag!) -->
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
 
-        <li v-if="this.user" class="nav-item">
+        <li v-if="this.$store.getters.isLoggedIn" class="nav-item">
           <!-- add a router link to the products page (don't use the a tag!) -->
-          <router-link to="/users/{{this.user['id']}}" class="nav-link" active-class="active">{{ this.user['name'] }}</router-link>
+          <router-link :to='{path: "/users/" + this.user.id}'  class="nav-link" active-class="active">{{ this.user.name }}</router-link>
         </li>
 
-        <li v-if="this.user" class="nav-item">
+        <li v-if="this.$store.getters.isLoggedIn" class="nav-item">
           <!-- add a router link to the products page (don't use the a tag!) -->
           <router-link to="/logout" class="nav-link" active-class="active">Logout</router-link>
         </li>
@@ -35,7 +35,6 @@ export default {
   name: "Navigation",
   computed: {
     user() {
-      console.log(this.$store.getters.getUser);
       return this.$store.getters.getUser
     }
   }

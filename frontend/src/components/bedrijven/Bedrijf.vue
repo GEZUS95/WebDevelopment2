@@ -1,8 +1,6 @@
 <template>
   <div class="bedrijf-item card" >
     <a  @click="this.$router.push('/bedrijven/single/' + this.bedrijf['id'])">
-      <div class="card-header">
-      </div>
       <div class="card-body">
         <h4>{{ this.bedrijf['name'] }}</h4>
         <p>{{ this.bedrijf['beschrijving'] }}</p>
@@ -12,7 +10,7 @@
         </div>
       </div>
     </a>
-    <div class="card-footer">
+    <div class="card-footer" v-if="this.$store.isLoggedIn">
       <a class="btn btn-primary" v-if="!this.isCompany()"
          @click="this.$router.push('/recenties/plaatsen/'+this.bedrijf['id'])" variant="primary">Recentie plaatsen</a>
     </div>
@@ -39,6 +37,7 @@ export default {
   },
   mounted() {
     this.currentUser = this.$store.getters.getUser
+    console.log(this.$store.isLoggedIn)
   },
   methods: {
     isCompany() {
