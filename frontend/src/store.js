@@ -1,6 +1,6 @@
 import Vuex from 'vuex';
 import Axios from 'axios';
-import createPersistedState from 'vuex-persistedstate';
+//import createPersistedState from 'vuex-persistedstate';
 
 const getDefaultState = () => {
     return {
@@ -11,7 +11,7 @@ const getDefaultState = () => {
 
 export default new Vuex.Store({
     strict: true,
-    plugins: [createPersistedState()],
+    //plugins: [createPersistedState()],
     state: getDefaultState(),
     getters: {
         isLoggedIn: state => {
@@ -29,23 +29,24 @@ export default new Vuex.Store({
             state.user = user;
         },
         RESET: state => {
+            console.log('test reset')
             Object.assign(state, getDefaultState());
         }
     },
     actions: {
-        // eslint-disable-next-line no-unused-vars
         setToken: ({ commit}, { token }) => {
             commit('SET_TOKEN', token);
             // set auth header
             Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         },
-        // eslint-disable-next-line no-unused-vars
         setUser: ({ commit}, { user }) => {
             commit('SET_USER', user);
-            // set auth header
         },
         logout: ({ commit }) => {
-            commit('RESET', '');
+            commit('RESET');
+            console.log('test')
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
             localStorage.clear();
         },
         autoLogin: ({ commit }) => {

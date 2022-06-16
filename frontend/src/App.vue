@@ -11,6 +11,9 @@ export default {
   name: "App",
   components: {
     Navigation
+  },
+  created() {
+    this.$store.dispatch('autoLogin');
   }
 };
 </script>
