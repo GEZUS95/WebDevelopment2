@@ -3,6 +3,7 @@
 namespace Services;
 
 use Models\ReactieDTO;
+use Models\Recentie;
 use Repositories\RecentieRepository;
 
 class RecentieService

@@ -21,14 +21,6 @@ E
 +api/app/vendor/composer/autoload_static.php,5\0\50deb78e5cc32a3418f0aba8050330dcb9e5d9bc
 M
 api/app/models/ReactieDTO.php,f\9\f9d5acca4b71fc2a33db2ebade501a6cba3db39f
-Z
-*api/app/controllers/recentiecontroller.php,1\a\1a4080ecf2dcabbc72117263540f2bad7c784961
-[
-+api/app/repositories/recentieRepository.php,c\8\c88ac92d5b0bda191bce2bac55da17671145c8df
-T
-$api/app/services/recentieService.php,7\e\7e36e9ded82838922f1925fb959679ba21ffcebb
-Y
-)api/app/controllers/bedrijfcontroller.php,7\5\759a92acd22c4b4c2b5feaeb53eb2c23290eda24
 F
 api/docker-compose.yml,8\2\820a2a54ae2ca098022d8801d4df58a53bb51c73
 R
@@ -41,8 +33,6 @@ N
 api/app/helpers/AuthHelper.php,9\b\9b9a22f62bf4610bba08c5412f52eca6ffa3ab98
 K
 api/app/models/recentie.php,3\7\3793b2fd3f688beade9d7e4cc3226b540293bfe8
-V
-&api/app/controllers/usercontroller.php,b\4\b45a7495301202a1d0c65b3792b744a9d92f9daf
 Z
 *api/app/repositories/CompanyRepository.php,7\3\7317c74a5f047e4b33419da733b742309b4c43e8
 S
@@ -53,5 +43,3 @@ P
  api/app/services/userservice.php,9\1\91bf326456e3c0318c50b1390d8a46e3fa86c443
 G
 api/app/models/user.php,b\0\b0f5997f7941ceb7b05c8d04da24d40d63e9d8a3
-H
-api/app/public/index.php,8\d\8dc9d4f14f00f39fae9876087e5472acb473bbec

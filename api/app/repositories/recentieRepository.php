@@ -39,7 +39,7 @@ class RecentieRepository extends Repository
         }
     }
 
-    public function insertOne(recentie $review)
+    public function insertOne(Recentie $review)
     {
         try {
             $stmt = $this->connection->prepare("INSERT INTO recenties (companyId, userId, title, description, rating, reaction) VALUES (:companyId, :userId, :title, :description, :rating, :reaction)");

@@ -18,12 +18,12 @@
       </b-form-group>
 
       <b-form-group
-          id="input-group-1"
+          id="input-group-2"
           label="Titel:"
-          label-for="input-1"
+          label-for="input-2"
       >
         <b-form-input
-            id="input-1"
+            id="input-2"
             v-model="form.title"
             placeholder="Titel van Recentie"
             type="text"
@@ -32,15 +32,30 @@
       </b-form-group>
 
       <b-form-group
-          id="input-group-2"
+          id="input-group-3"
           label="Beschrijving:"
-          label-for="input-2"
+          label-for="input-3"
       >
         <b-form-input
-            id="input-2"
+            id="input-3"
             v-model="form.beschrijving"
             placeholder="Wat is uw mening over dit bedrijf"
             type="text"
+        ></b-form-input>
+      </b-form-group>
+
+      <b-form-group
+          id="input-group-4"
+          label="Sterren:"
+          label-for="input-4"
+      >
+        <b-form-input
+            id="input-4"
+            v-model="form.rating"
+            placeholder="Hoveel sterren geeft u dit bedrijf"
+            type="number"
+            min="1"
+            max="5"
         ></b-form-input>
       </b-form-group>
 
@@ -89,7 +104,7 @@ export default {
         'rating': this.form.rating
       }
       axios
-          .post('recenties/'+ this.bedrijf['id'], json)
+          .post('recenties/create', json)
     },
     onReset(event) {
       event.preventDefault()
