@@ -15,6 +15,7 @@
     <div class="card-footer">
       <p>geschreven door: {{ this.user['name'] }}</p>
     </div>
+    <a class="btn btn-danger" v-if="this.$store.getters.getUser.role === 'Admin'" @click="this.delete()" variant="primary">Delete recentie</a>
   </a>
   <div class="container recentie-item" v-if="this.isCompany()">
 
@@ -104,6 +105,11 @@ export default {
       // checks if the url you requested has this string in it
       return window.location.href.indexOf("single") > -1
     },
+    delete(){
+      axios
+          .delete('/recenties/'+this.id)
+          .then(this.$router.go)
+    }
   },
 }
 </script>
