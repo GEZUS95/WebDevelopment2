@@ -34,8 +34,8 @@ class RecentieController extends Controller
         } else {
             try {
                 $post = $this->createObjectFromPostedJson("Models\\Recentie");
-                $res = $this->service->insertOne($post);
-                $this->respond($res);
+                $this->service->insertOne($post);
+                $this->respond($post);
             } catch (Exception $e) {
                 $this->respondWithError(500, $e->getMessage());
             }

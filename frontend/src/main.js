@@ -21,6 +21,7 @@ import LoginBedrijf from "@/components/LoginBedrijf";
 import newBedrijf from "@/components/bedrijven/NewBedrijf";
 import Update from "@/components/bedrijven/Update";
 import UpdateUser from "@/components/gebruikers/Update";
+import AllBedrijven from "@/components/admin/AllBedrijven";
 
 axios.defaults.baseURL = 'http://localhost:8082/';
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
@@ -44,7 +45,7 @@ const routes = [
     { path: '/users/:id/update', component: UpdateUser, props: true },
 
     { path: '/admin/users', component: AllUsers },
-    { path: '/admin/companys', component: AllUsers },
+    { path: '/admin/companys', component: AllBedrijven },
 
 ];
 

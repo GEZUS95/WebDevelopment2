@@ -56,6 +56,20 @@
         ></b-form-input>
       </b-form-group>
 
+      <b-form-group
+          id="input-group-5"
+          label="Telefoon:"
+          label-for="input-5"
+          v-if="this.$store.getters.getUser.role === 'Admin' "
+      >
+        <b-form-select
+            id="input-5"
+            v-model="form.role"
+            placeholder=""
+            :options="options"
+        ></b-form-select>
+      </b-form-group>
+
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button type="submit" variant="primary">Account aanpassen</b-button>
     </b-form>
@@ -67,7 +81,7 @@ import axios from "axios";
 
 export default {
   name: "Update",
-  props:{
+  props: {
     id: String
   },
   data() {
@@ -78,36 +92,44 @@ export default {
             password: '',
             name: '',
             email: '',
+            role: '',
             phone: '',
-          }
+          },
+      options: [
+        {value: 'User', text: 'User'},
+        {value: 'Admin', text: 'Admin'},
+        {value: 'Bedrijf', text: 'Bedrijf'}
+      ]
     }
   },
   methods: {
     getUser() {
-      axios.get('users/'+this.id)
+      axios.get('users/' + this.id)
           .then((res) => {
             this.form.id = res.data.id
             this.form.name = res.data.name
             this.form.email = res.data.email
             this.form.phone = res.data.phone
+            this.form.role = res.data.role
           })
     },
-    onSubmit(){
+    onSubmit() {
       let json = {
         'id': this.id,
         'name': this.form.name,
         'email': this.form.email,
         'phone': this.form.phone,
-        'password' : this.form.password
+        'password': this.form.password,
+        'role': this.form.role
       }
       axios
-          .put('users/'+ this.form.id + '/update', json)
+          .put('users/' + this.form.id + '/update', json)
           .then((res) => {
             this.getUser
             console.log(res.data)
           })
     },
-    onReset(){
+    onReset() {
       this.getUser()
     }
   },

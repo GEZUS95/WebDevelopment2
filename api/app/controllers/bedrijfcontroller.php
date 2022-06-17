@@ -53,8 +53,8 @@ class BedrijfController extends Controller
     {
         try {
             $postedCompany = $this->createObjectFromPostedJson(self::MODEL);
-            $res = $this->service->insertOne($postedCompany);
-            $this->respond($res);
+            $this->service->insertOne($postedCompany);
+            $this->respond($postedCompany);
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
         }
@@ -72,8 +72,8 @@ class BedrijfController extends Controller
 //                if ($this->auth->checkAuthorization()->id != $postedCompany->id) {
 //                    $this->respondWithError(403, self::NCU);
 //                } else {
-                    $res = $this->service->updateOne($postedCompany);
-                    $this->respond($res);
+                    $this->service->updateOne($postedCompany);
+                    $this->respond($postedCompany);
 
             } catch (Exception $e) {
                 $this->respondWithError(500, $e->getMessage());

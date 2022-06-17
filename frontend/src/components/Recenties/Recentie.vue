@@ -15,7 +15,7 @@
     <div class="card-footer">
       <p>geschreven door: {{ this.user['name'] }}</p>
     </div>
-    <a class="btn btn-danger" v-if="this.$store.getters.getUser.role === 'Admin'" @click="this.delete()" variant="primary">Delete recentie</a>
+    <a class="btn btn-danger" v-if="this.$store.getters.getUser.role === 'Admin'" @click="this.delete()" >Delete recentie</a>
   </a>
   <div class="container recentie-item" v-if="this.isCompany()">
 
@@ -107,7 +107,7 @@ export default {
     },
     delete(){
       axios
-          .delete('/recenties/'+this.id)
+          .delete('/recenties/'+this.recentie['id'])
           .then(this.$router.go)
     }
   },

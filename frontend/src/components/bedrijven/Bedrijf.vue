@@ -11,8 +11,10 @@
       </div>
     </a>
     <div class="card-footer" v-if="this.$store.getters.isLoggedIn">
-      <a class="btn btn-primary" v-if="!this.isCompany()" @click="this.$router.push('/recenties/plaatsen/'+this.bedrijf['id'])" variant="primary">Recentie plaatsen</a>
-      <a class="btn btn-primary" v-if="this.isCompany()" @click="this.$router.push('/bedrijven/'+this.bedrijf['id']+'/update/')" variant="primary">Update bedrijf</a>
+      <a class="btn btn-primary" v-if="!this.isCompany()" @click="this.$router.push('/recenties/plaatsen/'+this.bedrijf['id'])" >Recentie plaatsen</a>
+      <a class="btn btn-primary" v-if="this.isCompany()" @click="this.$router.push('/bedrijven/'+this.bedrijf['id']+'/update/')" >Update bedrijf</a>
+      <a class="btn btn-warning" v-if="this.$store.getters.getUser.role === 'Admin'" @click="this.$router.push('/bedrijven/'+this.bedrijf['id']+'/update/')" >Update Bedrijf</a>
+      <a class="btn btn-danger" v-if="this.$store.getters.getUser.role === 'Admin'" @click="this.delete()" >Delete Bedrijf</a>
     </div>
   </div>
 
@@ -20,10 +22,7 @@
 </template>
 
 <script>
-// checks if the url you requested has this string in it
-if (window.location.href.indexOf("single") > -1) {
-  // do stuff
-}
+import axios from "axios";
 
 export default {
   name: "Bedrijf",
@@ -47,6 +46,11 @@ export default {
     isSingle() {
       // checks if the url you requested has this string in it
       return window.location.href.indexOf("single") > -1
+    },
+    delete(){
+      axios
+          .delete('/bedrijven/'+this.bedrijf['id'])
+          .then(this.$router.go)
     }
   }
 }

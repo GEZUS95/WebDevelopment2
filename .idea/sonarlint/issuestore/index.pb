@@ -90,7 +90,5 @@ B
 +api/app/repositories/recentieRepository.php,c\8\c88ac92d5b0bda191bce2bac55da17671145c8df
 T
 $api/app/services/recentieService.php,7\e\7e36e9ded82838922f1925fb959679ba21ffcebb
-]
--frontend/src/components/admin/AllCompanys.vue,6\5\6538fc59be789ffa991ff6f55cd207586945e510
 J
 api/app/models/bedrijf.php,d\2\d282eaaa9d2df3d1da03c89253fbb7abdaf011fb

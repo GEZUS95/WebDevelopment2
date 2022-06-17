@@ -16,7 +16,6 @@ export default {
       axios
           .get('users')
           .then((res) => this.users = res.data)
-      console.log(this.users)
     }
   },
   data() {

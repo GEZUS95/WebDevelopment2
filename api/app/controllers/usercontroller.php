@@ -62,8 +62,8 @@ class UserController extends Controller
     {
         try {
             $postedUser = $this->createObjectFromPostedJson(self::MODEL);
-            $res = $this->service->insertOne($postedUser);
-            $this->respond($res);
+            $this->service->insertOne($postedUser);
+            $this->respond($postedUser);
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
         }
@@ -75,21 +75,21 @@ class UserController extends Controller
         if (!$this->auth->checkAuthorization()) {
             $this->respondWithError(401, self::NLI);
         } else {
-            if (!$this->auth->isRole("User")) {
-                $this->respondWithError(403, self::NCR);
-            } else {
+//            if (!$this->auth->isRole("User")) {
+//                $this->respondWithError(403, self::NCR);
+//            } else {
                 try {
                     $postedUser = $this->createObjectFromPostedJson(self::MODEL);
-                    if (($this->auth->checkAuthorization()->data->id !== $postedUser->id)) {
+                    if ($this->auth->checkAuthorization()->data->id !== $postedUser->id) {
                         $this->respondWithError(403, self::NCU);
                     } else {
-                        $res = $this->service->updateOne($postedUser);
-                        $this->respond($res);
+                        $this->service->updateOne($postedUser);
+                        $this->respond($postedUser);
                     }
                 } catch (Exception $e) {
                     $this->respondWithError(500, $e->getMessage());
                 }
-            }
+//            }
         }
     }
 
@@ -128,7 +128,7 @@ class UserController extends Controller
     public function getCurrentUser()
     {
         $check = $this->auth->checkAuthorization();
-        return $this->respond(["user" => $this->service->getOneById($check->data->id)]);
+        $this->respond(["user" => $this->service->getOneById($check->data->id)]);
     }
 }
 

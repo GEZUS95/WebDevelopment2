@@ -8,8 +8,8 @@
       <div class="bedrijf" v-if="gebruiker['role'] === 'Bedrijf'">
         <p>beschrijving: {{ this.gebruiker['beschrijving'] }}</p>
       </div>
-      <a class="btn btn-primary" v-if="this.gebruiker" @click="this.$router.push('/users/'+this.id+'/update/')" variant="primary">Update user</a>
-      <a class="btn btn-danger" v-if="this.$store.getters.getUser.role === 'Admin'" @click="this.delete()" variant="primary">Delete user</a>
+      <a class="btn btn-warning" v-if="this.gebruiker" @click="this.$router.push('/users/'+this.id+'/update/')" >Update user</a>
+      <a class="btn btn-danger" v-if="this.$store.getters.getUser.role === 'Admin'" @click="this.delete()" >Delete user</a>
     </div>
   </div>
 </template>
