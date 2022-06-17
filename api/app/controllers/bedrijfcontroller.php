@@ -113,6 +113,6 @@ class BedrijfController extends Controller
     public function getCurrentCompany()
     {
         $check = $this->auth->checkAuthorization();
-        return $this->respond(["user" => $this->service->getOneById($check->data->id)]);
+        $this->respond(["user" => $this->service->getOneById($check->data->id)]);
     }
 }

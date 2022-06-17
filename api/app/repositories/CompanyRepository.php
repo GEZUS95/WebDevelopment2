@@ -63,7 +63,7 @@ class CompanyRepository extends Repository
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, Bedrijf::class);
             $user = $stmt->fetch();
-            if ($user) $user->password = "";
+            if ($user) {$user->password = "";}
             return $user;
 
         } catch (PDOException $e) {
