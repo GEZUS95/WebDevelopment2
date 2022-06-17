@@ -21,9 +21,9 @@ $router->post('/bedrijf/login', 'BedrijfController@login');
 $router->post('/users/create', 'UserController@createUser');
 $router->put('/users/(\d+)/update', 'UserController@updateUser');
 $router->get('/users', 'UserController@getAllUsers');                       // admin
-$router->get('/users/current', 'UserController@getCurrentUser');
 $router->get('/users/(\d+)', 'UserController@getOneById');
 $router->delete('/users/(\d+)', 'UserController@deleteUser');               // user of admin
+$router->get('/users/current', 'UserController@getCurrentUser');
 
 // companys
 $router->post('/bedrijven/create', 'BedrijfController@createCompany');

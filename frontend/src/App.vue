@@ -12,9 +12,9 @@ export default {
   components: {
     Navigation
   },
-  created() {
-    this.$store.dispatch('autoLogin');
-  }
+  // created() {
+  //   this.$store.dispatch('autoLogin');
+  // }
 };
 </script>
 

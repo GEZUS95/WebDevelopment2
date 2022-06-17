@@ -2,10 +2,15 @@ import Vuex from 'vuex';
 import Axios from 'axios';
 import createPersistedState from 'vuex-persistedstate';
 
+const token = localStorage.getItem('token');
+const user = localStorage.getItem('user');
+
 const getDefaultState = () => {
+    Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     return {
-        token: '',
-        user: null
+        token: token ? token: null,
+        user: user ? user: null,
+
     };
 };
 
@@ -51,15 +56,15 @@ export default new Vuex.Store({
             localStorage.removeItem('user')
             localStorage.clear();
         },
-        autoLogin: ({ commit }) => {
-            const token = localStorage.getItem('token');
-            const user = localStorage.getItem('user');
-            console.log((token && user))
-            if (token && user) {
-                Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                commit('SET_TOKEN', token);
-                commit('SET_USER', JSON.parse(JSON.stringify(user)));
-            }
+        // autoLogin: ({ commit }) => {
+        //     const token = localStorage.getItem('token');
+        //     const user = localStorage.getItem('user');
+        //     console.log((token && user))
+        //     if (token && user) {
+        //         Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        //         commit('SET_TOKEN', token);
+        //         commit('SET_USER', JSON.parse(JSON.stringify(user)));
+        //     }}
 }
-    }
+
 });

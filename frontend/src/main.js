@@ -18,7 +18,9 @@ import newAccount from "@/components/gebruikers/newAccount";
 import User from "@/components/gebruikers/user";
 import AllUsers from "@/components/admin/AllUsers";
 import LoginBedrijf from "@/components/LoginBedrijf";
-import newBedrijf from "@/components/bedrijven/newBedrijf";
+import newBedrijf from "@/components/bedrijven/NewBedrijf";
+import Update from "@/components/bedrijven/Update";
+import UpdateUser from "@/components/gebruikers/Update";
 
 axios.defaults.baseURL = 'http://localhost:8082/';
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
@@ -28,13 +30,19 @@ const routes = [
     { path: '/login', component: Login },
     { path: '/bedrijven/login', component: LoginBedrijf },
     { path: '/logout', component: Logout },
+
     { path: '/recenties/single/:id', component: SingleView, props: true  },
     { path: '/recenties/plaatsen/:id', component: Plaatsen, props: true },
+
     { path: '/bedrijven', component: BedrijvenOverzichtView },
     { path: '/bedrijven/aanmaken', component: newBedrijf },
     { path: '/bedrijven/single/:id', component: BedrijvenSingleView, props: true },
+    { path: '/bedrijven/:id/update', component: Update, props: true},
+
     { path: '/create-account', component: newAccount },
     { path: '/users/:id', component: User, props: true },
+    { path: '/users/:id/update', component: UpdateUser, props: true },
+
     { path: '/admin/users', component: AllUsers },
     { path: '/admin/companys', component: AllUsers },
 
