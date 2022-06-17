@@ -66,21 +66,19 @@ class BedrijfController extends Controller
         if (!$this->auth->checkAuthorization()) {
             $this->respondWithError(401, self::NLI);
         } else {
-            if (!$this->auth->isRole("Bedrijf")) {
-                $this->respondWithError(403, "Not the correct role");
-            } else {
-                try {
-                    $postedCompany = $this->createObjectFromPostedJson(self::MODEL);
-                    if ($this->auth->checkAuthorization()->id != $postedCompany->id) {
-                        $this->respondWithError(403, self::NCU);
-                    } else {
-                        $res = $this->service->updateOne($postedCompany);
-                        $this->respond($res);
-                    }
-                } catch (Exception $e) {
-                    $this->respondWithError(500, $e->getMessage());
-                }
+
+            try {
+                $postedCompany = $this->createObjectFromPostedJson(self::MODEL);
+//                if ($this->auth->checkAuthorization()->id != $postedCompany->id) {
+//                    $this->respondWithError(403, self::NCU);
+//                } else {
+                    $res = $this->service->updateOne($postedCompany);
+                    $this->respond($res);
+
+            } catch (Exception $e) {
+                $this->respondWithError(500, $e->getMessage());
             }
+
         }
     }
 

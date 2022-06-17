@@ -10,9 +10,9 @@
         </div>
       </div>
     </a>
-    <div class="card-footer" v-if="this.$store.isLoggedIn">
+    <div class="card-footer" v-if="this.$store.getters.isLoggedIn">
       <a class="btn btn-primary" v-if="!this.isCompany()" @click="this.$router.push('/recenties/plaatsen/'+this.bedrijf['id'])" variant="primary">Recentie plaatsen</a>
-      <a class="btn btn-primary" v-if="!this.isCompany()" @click="this.$router.push('/bedrijven/update/')" variant="primary">Update bedrijf</a>
+      <a class="btn btn-primary" v-if="this.isCompany()" @click="this.$router.push('/bedrijven/'+this.bedrijf['id']+'/update/')" variant="primary">Update bedrijf</a>
     </div>
   </div>
 

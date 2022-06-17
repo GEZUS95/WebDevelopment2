@@ -109,7 +109,9 @@ export default {
     },
     onSubmit(){
       let json = {
+        'id': this.form.id,
         'name': this.form.name,
+        'password': this.form.password,
         'email': this.form.email,
         'phone': this.form.phone,
         'beschrijving': this.form.description,
@@ -118,6 +120,7 @@ export default {
       axios
           .put('bedrijven/'+ this.form.id + '/update', json)
           .then(this.getCompany)
+      location.reload();
     },
     onReset(){
       this.getCompany()

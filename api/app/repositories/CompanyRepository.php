@@ -114,15 +114,15 @@ class CompanyRepository extends Repository
             $stmt = $this->connection->prepare("UPDATE bedrijven SET name =:name, email = :email, password = :password, phone = :phone , beschrijving = :beschrijving, photo = :foto, logo = :logo WHERE id = :id");
 
             $hashPassword = $this->hashPassword($bedrijf->password);
-
+            $str = '';
             $stmt->bindParam(':name', $bedrijf->name);
             $stmt->bindParam(':email', $bedrijf->email);
             $stmt->bindParam(':password', $hashPassword);
             $stmt->bindParam(':phone', $bedrijf->phone);
             $stmt->bindParam(':id', $bedrijf->id);
             $stmt->bindParam(':beschrijving', $bedrijf->beschrijving);
-            $stmt->bindParam(':logo', $bedrijf->logo);
-            $stmt->bindParam(':foto', $bedrijf->foto);
+            $stmt->bindParam(':logo', $str);
+            $stmt->bindParam(':foto', $str);
 
             return $stmt->execute();
         } catch (PDOException $e) {
