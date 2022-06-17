@@ -77,7 +77,7 @@ export default {
           .get('users/' + this.recentie['userId'])
           .then((res) => this.user = res.data)
     },
-    async isCompany() {
+    isCompany() {
       if (this.currentUser['role'] === "Bedrijf") {
         return this.currentUser['id'] === this.bedrijf['id'];
       } else return false
