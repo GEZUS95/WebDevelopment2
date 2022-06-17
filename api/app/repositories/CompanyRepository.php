@@ -12,7 +12,7 @@ class CompanyRepository extends Repository
     {
         try {
             // retrieve the user with the given username
-            $stmt = $this->connection->prepare("SELECT id, name, password, email FROM bedrijven WHERE name = :username");
+            $stmt = $this->connection->prepare("SELECT id, name, password, email, role FROM bedrijven WHERE name = :username");
             $stmt->bindParam(':username', $username);
             $stmt->execute();
 

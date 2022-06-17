@@ -31,6 +31,7 @@ $router->put('/bedrijven/(\d+)/update', 'BedrijfController@updateCompany'); // b
 $router->get('/bedrijven', 'BedrijfController@getAllCompanys');
 $router->get('/bedrijven/(\d+)', 'BedrijfController@getOneById');
 $router->delete('/bedrijven/(\d+)', 'BedrijfController@deleteCompany');     //admin
+$router->get('/bedrijven/current', 'BedrijfController@getCurrentCompany');
 
 // recenties
 $router->post('/recenties/create', 'RecentieController@createOne');

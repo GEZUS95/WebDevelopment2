@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container item">
-      <h2>Inloggen Gebruiker</h2>
+      <h2>Inloggen Bedrijven</h2>
       <div class="row">
         <div class="">
           <form>
@@ -23,13 +23,13 @@
                   v-model="password"
               />
             </div>
-            <a @click="this.$router.push('/create-account')">Maak een nieuw account aan</a> <br>
+            <a @click="this.$router.push('/bedrijven/create-account')">Maak een nieuw account aan</a> <br>
             <button type="button" @click="login()" class="btn btn-primary">Submit</button>
           </form>
         </div>
       </div>
       <br>
-      <a @click="this.$router.push('/bedrijven/login')">Bent u een Bedrijf log dan hier in</a>
+      <a @click="this.$router.push('/login')">Bent u een Gebruiker log dan hier in</a>
     </div>
   </section>
 </template>
@@ -38,7 +38,7 @@
 import axios from "axios";
 
 export default {
-  name: "Login",
+  name: "LoginBedrijf",
   data() {
     return {
       username: "",
@@ -49,9 +49,8 @@ export default {
   methods: {
     // login through a store action
     async login() {
-      // await this.$store.dispatch('login', {username: this.username, password: this.password})
       await axios
-          .post('login', {username: this.username, password: this.password})
+          .post('bedrijf/login', {username: this.username, password: this.password})
           .then((res) => {
             const resdata = res.data.token
             this.$store.commit('SET_TOKEN', resdata)
@@ -61,7 +60,7 @@ export default {
 
           })
       await axios
-          .get('users/current')
+          .get('bedrijven/current')
           .then((res) => {
                 const resdata = res.data.user
                 this.$store.commit('SET_USER', resdata)

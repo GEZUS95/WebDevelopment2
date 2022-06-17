@@ -14,9 +14,10 @@ import SingleView from "@/components/Recenties/SingleView";
 import BedrijvenSingleView from "@/components/bedrijven/SingleView";
 import BedrijvenOverzichtView from "@/components/bedrijven/BedrijvenOverzichtView";
 import Plaatsen from "@/components/Recenties/Plaatsen";
-import newAccount from "@/components/newAccount";
-import User from "@/components/user";
+import newAccount from "@/components/gebruikers/newAccount";
+import User from "@/components/gebruikers/user";
 import AllUsers from "@/components/admin/AllUsers";
+import LoginBedrijf from "@/components/LoginBedrijf";
 
 axios.defaults.baseURL = 'http://localhost:8082/';
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
@@ -24,6 +25,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
 const routes = [
     { path: '/', component: Home },
     { path: '/login', component: Login },
+    { path: '/bedrijven/login', component: LoginBedrijf },
     { path: '/logout', component: Logout },
     { path: '/recenties/single/:id', component: SingleView, props: true  },
     { path: '/recenties/plaatsen/:id', component: Plaatsen, props: true },

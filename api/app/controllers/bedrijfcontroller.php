@@ -9,7 +9,7 @@ use Services\BedrijfService;
 class BedrijfController extends Controller
 {
     private BedrijfService $service;
-    private const MODEL = "Models\\Company";
+    private const MODEL = "Models\\Bedrijf";
     private const NCU = "Not the correct user";
     private const NLI = "Not Logged In";
 
@@ -32,7 +32,7 @@ class BedrijfController extends Controller
                 return;
             }
 
-            $this->respond($this->auth->generateJWT($Company));
+            $this->respond(['token' => $this->auth->generateJWT($Company)]);
 
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
@@ -110,5 +110,11 @@ class BedrijfController extends Controller
                 }
             }
         }
+    }
+
+    public function getCurrentCompany()
+    {
+        $check = $this->auth->checkAuthorization();
+        return $this->respond(["user" => $this->service->getOneById($check->data->id)]);
     }
 }

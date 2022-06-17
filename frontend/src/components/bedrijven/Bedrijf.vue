@@ -37,7 +37,6 @@ export default {
   },
   mounted() {
     this.currentUser = this.$store.getters.getUser
-    console.log(this.$store.isLoggedIn)
   },
   methods: {
     isCompany() {

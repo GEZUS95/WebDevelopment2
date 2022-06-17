@@ -128,7 +128,7 @@ class UserController extends Controller
     public function getCurrentUser()
     {
         $check = $this->auth->checkAuthorization();
-        return $this->respond(["user" => $this->service->getOneById(4)]);
+        return $this->respond(["user" => $this->service->getOneById($check->data->id)]);
     }
 }
 

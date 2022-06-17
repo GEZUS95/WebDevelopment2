@@ -5,7 +5,7 @@ import Axios from 'axios';
 const getDefaultState = () => {
     return {
         token: '',
-        user: Object
+        user: null
     };
 };
 
@@ -24,19 +24,23 @@ export default new Vuex.Store({
     mutations: {
         SET_TOKEN: (state, token) => {
             state.token = token;
+            Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         },
         SET_USER: (state, user) => {
             state.user = user;
         },
         RESET: state => {
             Object.assign(state, getDefaultState());
+            state.user = {};
+            state.token = '';
+            Axios.defaults.headers.common['Authorization'] = '';
         }
     },
     actions: {
         setToken: ({ commit}, { token }) => {
             commit('SET_TOKEN', token);
             // set auth header
-            Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
         },
         setUser: ({ commit}, { user }) => {
             commit('SET_USER', user);
