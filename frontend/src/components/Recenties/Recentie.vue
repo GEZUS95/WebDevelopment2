@@ -22,12 +22,12 @@
             label="Reactie:"
             label-for="input-1"
         >
-          <b-form-input
+          <b-form-textarea
               id="input-1"
               v-model="form.reaction"
               placeholder="Reageer"
               type="text"
-          ></b-form-input>
+          ></b-form-textarea>
         </b-form-group>
 
         <b-button type="reset" variant="danger">Reset</b-button>
@@ -38,11 +38,11 @@
 
 <script>
 import axios from "axios";
-import {BForm, BButton, BFormGroup,BFormInput} from "bootstrap-vue-3";
+import {BForm, BButton, BFormGroup} from "bootstrap-vue-3";
 
 export default {
   name: "Recentie",
-  components: {BForm, BButton, BFormInput, BFormGroup},
+  components: {BForm, BButton, BFormGroup},
   props: {
     recentie: Object,
   },

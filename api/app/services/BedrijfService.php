@@ -42,6 +42,7 @@ class BedrijfService
     {
         if (!$this->bedrijfExists($bedrijf->email)) {
             $bedrijf->role = "Bedrijf";
+
             return $this->repository->insertOne($bedrijf);
         } else {
             return "Email already taken";

@@ -47,9 +47,7 @@ export default {
     };
   },
   methods: {
-    // login through a store action
     async login() {
-      // await this.$store.dispatch('login', {username: this.username, password: this.password})
       await axios
           .post('login', {username: this.username, password: this.password})
           .then((res) => {
@@ -65,7 +63,7 @@ export default {
           .then((res) => {
                 const resdata = res.data.user
                 this.$store.commit('SET_USER', resdata)
-                localStorage.setItem('user', this.$store.getters.getUser)
+                localStorage.setItem('user', JSON.stringify(resdata))
                 console.log("USER:")
                 console.log(this.$store.getters.getUser)
               }

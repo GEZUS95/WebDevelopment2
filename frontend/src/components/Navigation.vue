@@ -15,9 +15,14 @@
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
 
-        <li v-if="this.$store.getters.isLoggedIn" class="nav-item">
+        <li v-if="this.user.role === 'User'" class="nav-item">
           <!-- add a router link to the products page (don't use the a tag!) -->
           <router-link :to='{path: "/users/" + this.user.id}'  class="nav-link" active-class="active">{{ this.user.name }}</router-link>
+        </li>
+
+        <li v-if="this.user.role === 'Bedrijf'" class="nav-item">
+          <!-- add a router link to the products page (don't use the a tag!) -->
+          <router-link :to='{path: "/bedrijven/single/" + this.user.id}'  class="nav-link" active-class="active">{{ this.user.name }}</router-link>
         </li>
 
         <li v-if="this.$store.getters.isLoggedIn" class="nav-item">

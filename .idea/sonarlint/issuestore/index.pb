@@ -27,8 +27,6 @@ O
 api/sql/FINAL_developmentdb.sql,5\b\5b66239ffb5d0905652b5e55dcd0fcd2abaac732
 K
 api/app/models/recentie.php,3\7\3793b2fd3f688beade9d7e4cc3226b540293bfe8
-S
-#api/app/services/BedrijfService.php,1\b\1bc455b2d64facceabc0ed9db6de3864ef83248e
 P
  api/app/services/userservice.php,9\1\91bf326456e3c0318c50b1390d8a46e3fa86c443
 :
@@ -100,8 +98,6 @@ Z
 -frontend/src/components/admin/AllCompanys.vue,6\5\6538fc59be789ffa991ff6f55cd207586945e510
 Z
 *frontend/src/components/admin/AllUsers.vue,1\e\1e89f2cd19967f89d7ec0ee3a83dc13bc19cc13f
-^
-.frontend/src/components/Recenties/Recentie.vue,e\2\e25b15018e45212df60df3fe23e0b9e61c93e9cb
 J
 api/app/models/bedrijf.php,d\2\d282eaaa9d2df3d1da03c89253fbb7abdaf011fb
 `

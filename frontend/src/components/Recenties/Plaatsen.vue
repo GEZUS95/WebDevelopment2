@@ -36,12 +36,12 @@
           label="Beschrijving:"
           label-for="input-3"
       >
-        <b-form-input
+        <b-form-textarea
             id="input-3"
             v-model="form.beschrijving"
             placeholder="Wat is uw mening over dit bedrijf"
             type="text"
-        ></b-form-input>
+        ></b-form-textarea>
       </b-form-group>
 
       <b-form-group

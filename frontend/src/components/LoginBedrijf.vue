@@ -23,7 +23,7 @@
                   v-model="password"
               />
             </div>
-            <a @click="this.$router.push('/bedrijven/create-account')">Maak een nieuw account aan</a> <br>
+            <a @click="this.$router.push('/bedrijven/aanmaken')">Maak een nieuw bedrijf aan</a> <br>
             <button type="button" @click="login()" class="btn btn-primary">Submit</button>
           </form>
         </div>

@@ -18,6 +18,7 @@ import newAccount from "@/components/gebruikers/newAccount";
 import User from "@/components/gebruikers/user";
 import AllUsers from "@/components/admin/AllUsers";
 import LoginBedrijf from "@/components/LoginBedrijf";
+import newBedrijf from "@/components/bedrijven/newBedrijf";
 
 axios.defaults.baseURL = 'http://localhost:8082/';
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
@@ -30,6 +31,7 @@ const routes = [
     { path: '/recenties/single/:id', component: SingleView, props: true  },
     { path: '/recenties/plaatsen/:id', component: Plaatsen, props: true },
     { path: '/bedrijven', component: BedrijvenOverzichtView },
+    { path: '/bedrijven/aanmaken', component: newBedrijf },
     { path: '/bedrijven/single/:id', component: BedrijvenSingleView, props: true },
     { path: '/create-account', component: newAccount },
     { path: '/users/:id', component: User, props: true },

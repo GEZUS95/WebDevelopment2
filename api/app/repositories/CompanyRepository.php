@@ -63,7 +63,7 @@ class CompanyRepository extends Repository
 
             $stmt->setFetchMode(PDO::FETCH_CLASS, Bedrijf::class);
             $user = $stmt->fetch();
-            $user->password = "";
+            if ($user) $user->password = "";
             return $user;
 
         } catch (PDOException $e) {
@@ -74,18 +74,18 @@ class CompanyRepository extends Repository
     function insertOne(Bedrijf $bedrijf)
     {
         try {
-            $stmt = $this->connection->prepare("INSERT INTO bedrijven (name, role, email, password, phone, beschrijving, foto, logo) VALUES (:userName, :role ,:email, :password, :phone, :beschrijving, :foto, :logo)");
+            $stmt = $this->connection->prepare("INSERT INTO bedrijven (name, role, email, password, phone, beschrijving, photo, logo) VALUES (:userName, :role ,:email, :password, :phone, :beschrijving, :foto, :logo)");
 
             $hashPassword = $this->hashPassword($bedrijf->password);
-
+            $str = '';
             $stmt->bindParam(':userName', $bedrijf->name);
             $stmt->bindParam(':email', $bedrijf->email);
             $stmt->bindParam(':password', $hashPassword);
             $stmt->bindParam(':phone', $bedrijf->phone);
             $stmt->bindParam(':role', $bedrijf->role);
             $stmt->bindParam(':beschrijving', $bedrijf->beschrijving);
-            $stmt->bindParam(':logo', $bedrijf->logo);
-            $stmt->bindParam(':foto', $bedrijf->foto);
+            $stmt->bindParam(':logo', $str);
+            $stmt->bindParam(':foto', $str);
 
             $stmt->execute();
         } catch (PDOException $e) {
@@ -111,7 +111,7 @@ class CompanyRepository extends Repository
     function updateOne(Bedrijf $bedrijf)
     {
         try {
-            $stmt = $this->connection->prepare("UPDATE bedrijven SET name =:name, email = :email, password = :password, phone = :phone , beschrijving = :beschrijving, foto = :foto, logo = :logo WHERE id = :id");
+            $stmt = $this->connection->prepare("UPDATE bedrijven SET name =:name, email = :email, password = :password, phone = :phone , beschrijving = :beschrijving, photo = :foto, logo = :logo WHERE id = :id");
 
             $hashPassword = $this->hashPassword($bedrijf->password);
 
