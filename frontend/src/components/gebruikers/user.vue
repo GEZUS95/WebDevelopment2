@@ -8,6 +8,7 @@
       <div class="bedrijf" v-if="gebruiker['role'] === 'Bedrijf'">
         <p>beschrijving: {{ this.gebruiker['beschrijving'] }}</p>
       </div>
+      <a class="btn btn-primary" v-if="this.gebruiker" @click="this.$router.push('/users/'+this.id+'/update/')" variant="primary">Update bedrijf</a>
     </div>
   </div>
 </template>

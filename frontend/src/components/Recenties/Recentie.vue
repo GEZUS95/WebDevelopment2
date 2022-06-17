@@ -7,32 +7,36 @@
     <div v-if="this.isSingle()" class="card-body">
       {{ this.recentie['description'] }}
       <p>Sterren: {{ this.recentie['rating'] }}</p>
+      <div>
+        <p>Reactie: {{ this.recentie['reaction'] }}</p>
+      </div>
     </div>
+
     <div class="card-footer">
       <p>geschreven door: {{ this.user['name'] }}</p>
     </div>
   </a>
   <div class="container recentie-item" v-if="this.isCompany()">
 
-<!--    modal-->
-    <h2>Reageer op deze recentie</h2>
-      <b-form @submit="onSubmit" @reset="onReset" >
-        <b-form-group
-            id="input-group-1"
-            label="Reactie:"
-            label-for="input-1"
-        >
-          <b-form-textarea
-              id="input-1"
-              v-model="form.reaction"
-              placeholder="Reageer"
-              type="text"
-          ></b-form-textarea>
-        </b-form-group>
+    <!--    modal-->
+    <h3>Reageer op deze recentie</h3>
+    <b-form @submit="onSubmit" @reset="onReset">
+      <b-form-group
+          id="input-group-1"
+          label="Reactie:"
+          label-for="input-1"
+      >
+        <b-form-textarea
+            id="input-1"
+            v-model="form.reaction"
+            placeholder="Reageer"
+            type="text"
+        ></b-form-textarea>
+      </b-form-group>
 
-        <b-button type="reset" variant="danger">Reset</b-button>
-        <b-button type="submit" variant="primary">Reageren</b-button>
-      </b-form>
+      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button type="submit" variant="primary">Reageren</b-button>
+    </b-form>
   </div>
 </template>
 
@@ -48,7 +52,7 @@ export default {
   },
   data() {
     return {
-      form:{
+      form: {
         reaction: ''
       },
       bedrijf: {},
@@ -63,17 +67,17 @@ export default {
     this.currentUser = this.$store.getters.getUser
   },
   methods: {
-    getBedrijf() {
-      axios
+    async getBedrijf() {
+      await axios
           .get('bedrijven/' + this.recentie['companyId'])
           .then((response) => this.bedrijf = response.data)
     },
-    getUser() {
-      axios
+    async getUser() {
+      await axios
           .get('users/' + this.recentie['userId'])
           .then((res) => this.user = res.data)
     },
-    isCompany() {
+    async isCompany() {
       if (this.currentUser['role'] === "Bedrijf") {
         return this.currentUser['id'] === this.bedrijf['id'];
       } else return false
@@ -81,7 +85,7 @@ export default {
     onSubmit(event) {
       event.preventDefault()
       try {
-        axios().post('recenties/' + this.recentie['id'], this.form.reaction)
+        axios.post('recenties/' + this.recentie['id'], {'beschrijving': this.form.reaction})
       } catch (error) {
         this.error = error;
       }
@@ -96,7 +100,7 @@ export default {
         this.show = true
       })
     },
-    isSingle(){
+    isSingle() {
       // checks if the url you requested has this string in it
       return window.location.href.indexOf("single") > -1
     },

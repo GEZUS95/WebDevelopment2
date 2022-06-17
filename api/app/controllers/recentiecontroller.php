@@ -57,15 +57,11 @@ class RecentieController extends Controller
         if (!$this->auth->checkAuthorization()) {
             $this->respondWithError(401, self::NLI);
         } else {
-            if (!$this->auth->isRole("Bedrijf")) {
-                $this->respondWithError(403, "Not the correct role");
-            } else {
-                try {
-                    $post = $this->createObjectFromPostedJson("Models\\RecentieDTO");
-                    $this->service->addReaction($id, $post);
-                } catch (Exception $e) {
-                    $this->respondWithError(500, $e->getMessage());
-                }
+            try {
+                $post = $this->createObjectFromPostedJson("Models\\ReactieDTO");
+                $this->service->addReaction($id, $post);
+            } catch (Exception $e) {
+                $this->respondWithError(500, $e->getMessage());
             }
         }
     }

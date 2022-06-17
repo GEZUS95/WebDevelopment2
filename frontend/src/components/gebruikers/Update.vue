@@ -94,15 +94,18 @@ export default {
     },
     onSubmit(){
       let json = {
+        'id': this.id,
         'name': this.form.name,
         'email': this.form.email,
         'phone': this.form.phone,
-
-
+        'password' : this.form.password
       }
       axios
           .put('users/'+ this.form.id + '/update', json)
-          .then(this.getUser)
+          .then((res) => {
+            this.getUser
+            console.log(res.data)
+          })
     },
     onReset(){
       this.getUser()

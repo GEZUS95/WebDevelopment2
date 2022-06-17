@@ -61,11 +61,8 @@ class AuthHelper
 
     public function isRole($role): bool
     {
-        $jwt = $this->checkAuthorization();
-        $decoded = $this->checkAuthorization($jwt);
-
+        $decoded = $this->checkAuthorization();
         $user = $this->userService->getOneById($decoded->data->id);
-
         return $user->role === $role;
     }
 }

@@ -19,8 +19,6 @@ E
 api/app/composer.json,4\f\4fffd4878614c00dc7aaf82fc74252e0bf0cb59c
 [
 +api/app/vendor/composer/autoload_static.php,5\0\50deb78e5cc32a3418f0aba8050330dcb9e5d9bc
-M
-api/app/models/ReactieDTO.php,f\9\f9d5acca4b71fc2a33db2ebade501a6cba3db39f
 F
 api/docker-compose.yml,8\2\820a2a54ae2ca098022d8801d4df58a53bb51c73
 O
@@ -92,13 +90,9 @@ B
 +api/app/repositories/recentieRepository.php,c\8\c88ac92d5b0bda191bce2bac55da17671145c8df
 T
 $api/app/services/recentieService.php,7\e\7e36e9ded82838922f1925fb959679ba21ffcebb
-Z
-*api/app/controllers/recentiecontroller.php,1\a\1a4080ecf2dcabbc72117263540f2bad7c784961
 ]
 -frontend/src/components/admin/AllCompanys.vue,6\5\6538fc59be789ffa991ff6f55cd207586945e510
 Z
 *frontend/src/components/admin/AllUsers.vue,1\e\1e89f2cd19967f89d7ec0ee3a83dc13bc19cc13f
 J
 api/app/models/bedrijf.php,d\2\d282eaaa9d2df3d1da03c89253fbb7abdaf011fb
-`
-0frontend/src/components/Recenties/SingleView.vue,4\7\470a509d139028f7bcfd7c3bc573a0dd49eb5b77

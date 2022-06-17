@@ -80,7 +80,7 @@ class UserController extends Controller
             } else {
                 try {
                     $postedUser = $this->createObjectFromPostedJson(self::MODEL);
-                    if (($this->auth->checkAuthorization()->data->id != $postedUser->id) || !$this->auth->isRole("Admin")) {
+                    if (($this->auth->checkAuthorization()->data->id !== $postedUser->id)) {
                         $this->respondWithError(403, self::NCU);
                     } else {
                         $res = $this->service->updateOne($postedUser);
