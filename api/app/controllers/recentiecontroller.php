@@ -71,16 +71,16 @@ class RecentieController extends Controller
         if (!$this->auth->checkAuthorization()) {
             $this->respondWithError(401, self::NLI);
         } else {
-            if (!$this->auth->isRole("Admin")) {
-                $this->respondWithError(403, "Not the correct role");
-            } else {
+//            if (!$this->auth->isRole("Admin")) {
+//                $this->respondWithError(403, "Not the correct role");
+//            } else {
                 try {
                     $res = $this->service->deleteOne($id);
                     $this->respond($res);
                 } catch (Exception $e) {
                     $this->respondWithError(500, $e->getMessage());
                 }
-            }
+//            }
         }
     }
 }
