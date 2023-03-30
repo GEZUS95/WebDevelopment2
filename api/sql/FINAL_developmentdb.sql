@@ -34,7 +34,7 @@ CREATE TABLE `bedrijven` (
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
-  `beschrijving` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
   `logo` longtext NOT NULL,
   `photo` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()

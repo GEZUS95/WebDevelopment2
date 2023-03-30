@@ -118,7 +118,7 @@ export default {
 
       }
       axios
-          .put('bedrijven/'+ this.form.id + '/update', json)
+          .put('bedrijven/'+ this.form.id, json)
           .then(this.getCompany)
       location.reload();
     },
