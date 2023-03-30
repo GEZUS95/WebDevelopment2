@@ -19,7 +19,9 @@
 
           <li v-if="user.role === 'User' " class="nav-item">
             <!-- add a router link to the products page (don't use the a tag!) -->
-            <router-link :to='{path: "/users/" + this.user.id}' class="nav-link" active-class="active">{{this.user.name}}</router-link>
+            <router-link :to='{path: "/users/" + this.user.id}' class="nav-link" active-class="active">
+              {{ this.user.name }}
+            </router-link>
           </li>
 
           <li v-if="user.role === 'Bedrijf'" class="nav-item">
@@ -34,7 +36,8 @@
             <router-link :to='{path: "/admin/companys"}' class="nav-link" active-class="active">
               Admin | bedrijven
             </router-link>
-          </li><li v-if="user.role === 'Admin'" class="nav-item">
+          </li>
+          <li v-if="user.role === 'Admin'" class="nav-item">
             <!-- add a router link to the products page (don't use the a tag!) -->
             <router-link :to='{path: "/admin/users"}' class="nav-link" active-class="active">
               Admin | users
