@@ -27,7 +27,7 @@ class UserController extends Controller
         try {
             $postedUser = $this->createObjectFromPostedJson(self::MODEL);
 
-            $user = $this->service->checkUsernamePassword($postedUser->username, $postedUser->password);
+            $user = $this->service->checkUsernamePassword($postedUser->name, $postedUser->password);
             if (!$user) {
                 $this->respondWithError(401, "Invalid Credentials");
                 return;
@@ -72,24 +72,21 @@ class UserController extends Controller
 
     public function updateUser()
     {
-        if (!$this->auth->checkAuthorization()) {
+        $jwt = $this->auth->checkAuthorization();
+        if (!$jwt) {
             $this->respondWithError(401, self::NLI);
         } else {
-//            if (!$this->auth->isRole("User")) {
-//                $this->respondWithError(403, self::NCR);
-//            } else {
-                try {
-                    $postedUser = $this->createObjectFromPostedJson(self::MODEL);
-                    if ($this->auth->checkAuthorization()->data->id !== $postedUser->id) {
-                        $this->respondWithError(403, self::NCU);
-                    } else {
-                        $this->service->updateOne($postedUser);
-                        $this->respond($postedUser);
-                    }
-                } catch (Exception $e) {
-                    $this->respondWithError(500, $e->getMessage());
+            try {
+                $postedUser = $this->createObjectFromPostedJson(self::MODEL);
+                if ($jwt->data->id !== $postedUser->id) {
+                    $this->respondWithError(403, self::NCU);
+                } else {
+                    $this->service->updateOne($postedUser);
+                    $this->respond($postedUser);
                 }
-//            }
+            } catch (Exception $e) {
+                $this->respondWithError(500, $e->getMessage());
+            }
         }
     }
 
@@ -115,12 +112,12 @@ class UserController extends Controller
 //            if ((!$this->auth->isRole("Admin")) || (!$this->auth->isRole("User"))) {
 //                $this->respondWithError(403, self::NCR);
 //            } else {
-                try {
-                    $res = $this->service->deleteOne($id);
-                    $this->respond($res);
-                } catch (Exception $e) {
-                    $this->respondWithError(500, $e->getMessage());
-                }
+            try {
+                $res = $this->service->deleteOne($id);
+                $this->respond($res);
+            } catch (Exception $e) {
+                $this->respondWithError(500, $e->getMessage());
+            }
 //            }
         }
     }

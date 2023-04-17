@@ -9,6 +9,7 @@ class User {
     public string $email;
     public string $password;
     public string $phone;
+    public string $created_at;
 
     /**
      * @return int

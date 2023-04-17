@@ -105,7 +105,7 @@ export default {
         'rating': this.form.rating
       }
       axios
-          .post('recenties/create', json)
+          .post('recenties', json)
     },
     onReset(event) {
       event.preventDefault()

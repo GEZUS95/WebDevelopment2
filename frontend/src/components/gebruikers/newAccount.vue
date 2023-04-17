@@ -89,7 +89,7 @@ export default {
         'name': this.form.name,
       }
       axios
-          .post('users/create', json)
+          .post('users', json)
           .then(this.$router.push('/login'))
     },
     onReset(){

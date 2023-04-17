@@ -123,7 +123,7 @@ export default {
         'role': this.form.role
       }
       axios
-          .put('users/' + this.form.id + '/update', json)
+          .put('users/' + this.form.id, json)
           .then((res) => {
             this.getUser
             console.log(res.data)

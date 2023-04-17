@@ -1,7 +1,6 @@
 .DS_Store
-frontend-les6-master/node_modules
+frontend/node_modules
 /dist
-.idea
 node_modules
 
 # local env files
@@ -15,7 +14,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Editor directories and files
-.idea
+/.idea/
 .vscode
 *.suo
 *.ntvs*

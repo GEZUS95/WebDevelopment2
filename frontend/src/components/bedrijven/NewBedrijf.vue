@@ -102,7 +102,7 @@ export default {
         'beschrijving': this.form.description,
       }
       axios
-          .post('bedrijven/create', json)
+          .post('bedrijven', json)
           .then(this.$router.push('/bedrijven/login'))
     },
     onReset(){
