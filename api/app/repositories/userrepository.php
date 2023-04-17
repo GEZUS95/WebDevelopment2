@@ -85,6 +85,7 @@ class UserRepository extends Repository
             $stmt->bindParam(':role', $user->role);
 
             $stmt->execute();
+            return $this->getOneById($this->connection->lastInsertId());
         } catch (PDOException $e) {
             echo $e;
         }

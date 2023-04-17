@@ -16,7 +16,7 @@ class UserController extends Controller
     private const NLI = "Not Logged In";
 
     // initialize user service
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->service = new UserService();
@@ -24,6 +24,7 @@ class UserController extends Controller
 
     public function login()
     {
+        //TODO: put this in service
         try {
             $postedUser = $this->createObjectFromPostedJson(self::MODEL);
 
@@ -49,8 +50,7 @@ class UserController extends Controller
                 $this->respondWithError(403, self::NCR);
             } else {
                 try {
-                    $res = $this->service->getAll();
-                    $this->respond($res);
+                    $this->respond($this->service->getAll());
                 } catch (Exception $e) {
                     $this->respondWithError(500, $e->getMessage());
                 }
@@ -62,8 +62,7 @@ class UserController extends Controller
     {
         try {
             $postedUser = $this->createObjectFromPostedJson(self::MODEL);
-            $this->service->insertOne($postedUser);
-            $this->respond($postedUser);
+            $this->respond($this->service->insertOne($postedUser));
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
         }
@@ -96,8 +95,7 @@ class UserController extends Controller
             $this->respondWithError(401, self::NLI);
         } else {
             try {
-                $res = $this->service->getOneById($id);
-                $this->respond($res);
+                $this->respond($this->service->getOneById($id));
             } catch (Exception $e) {
                 $this->respondWithError(500, $e->getMessage());
             }
@@ -113,8 +111,7 @@ class UserController extends Controller
 //                $this->respondWithError(403, self::NCR);
 //            } else {
             try {
-                $res = $this->service->deleteOne($id);
-                $this->respond($res);
+                $this->respond($this->service->deleteOne($id));
             } catch (Exception $e) {
                 $this->respondWithError(500, $e->getMessage());
             }

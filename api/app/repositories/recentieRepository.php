@@ -44,14 +44,15 @@ class RecentieRepository extends Repository
         try {
             $stmt = $this->connection->prepare("INSERT INTO recenties (companyId, userId, title, description, rating, reaction) VALUES (:companyId, :userId, :title, :description, :rating, :reaction)");
 
-            $stmt->bindParam(':companyId', $review->companyId);
+            $stmt->bindParam(':companyId', $review->bedrijfsId);
             $stmt->bindParam(':userId', $review->userId);
             $stmt->bindParam(':title', $review->title);
-            $stmt->bindParam(':description', $review->description);
+            $stmt->bindParam(':description', $review->beschrijving);
             $stmt->bindParam(':rating', $review->rating);
-            $stmt->bindParam(':reaction', $review->reaction);
+            $stmt->bindParam(':reaction', $review->reactie);
 
-            return $stmt->execute();
+            $stmt->execute();
+            return $this->getOne($this->connection->lastInsertId());
         } catch (PDOException $e) {
             echo $e;
         }

@@ -7,7 +7,7 @@ use Services\RecentieService;
 
 class RecentieController extends Controller
 {
-    private $service;
+    private RecentieService $service;
     private const NLI = "Not Logged In";
 
     // initialize services
@@ -20,8 +20,7 @@ class RecentieController extends Controller
     public function getAll()
     {
         try {
-            $res = $this->service->getAll();
-            $this->respond($res);
+            $this->respond($this->service->getAll());
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
         }
@@ -34,8 +33,7 @@ class RecentieController extends Controller
         } else {
             try {
                 $post = $this->createObjectFromPostedJson("Models\\Recentie");
-                $this->service->insertOne($post);
-                $this->respond($post);
+                $this->respond($this->service->insertOne($post));
             } catch (Exception $e) {
                 $this->respondWithError(500, $e->getMessage());
             }
@@ -45,8 +43,7 @@ class RecentieController extends Controller
     public function getOneById($id)
     {
         try {
-            $res = $this->service->getOne($id);
-            $this->respond($res);
+            $this->respond($this->service->getOne($id));
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
         }
@@ -75,8 +72,7 @@ class RecentieController extends Controller
 //                $this->respondWithError(403, "Not the correct role");
 //            } else {
                 try {
-                    $res = $this->service->deleteOne($id);
-                    $this->respond($res);
+                    $this->respond($this->service->deleteOne($id));
                 } catch (Exception $e) {
                     $this->respondWithError(500, $e->getMessage());
                 }
