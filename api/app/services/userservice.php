@@ -2,7 +2,7 @@
 
 namespace Services;
 
-use Models\User;
+use models\User;
 use Repositories\UserRepository;
 
 class UserService

@@ -2,13 +2,13 @@
 
 namespace Repositories;
 
-use Models\Bedrijf;
+use models\Bedrijf;
 use PDO;
 use PDOException;
 
 class CompanyRepository extends Repository
 {
-    function checkUsernamePassword($username, $password)
+    public function checkUsernamePassword($username, $password)
     {
         try {
             // retrieve the user with the given username
@@ -35,7 +35,7 @@ class CompanyRepository extends Repository
         }
     }
 
-    function getAll()
+    public function getAll()
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM bedrijven");
@@ -54,7 +54,7 @@ class CompanyRepository extends Repository
         }
     }
 
-    function getOne(string $email)
+    public function getOne(string $email)
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM bedrijven WHERE email = :email LIMIT 1");
@@ -71,7 +71,7 @@ class CompanyRepository extends Repository
         }
     }
 
-    function insertOne(Bedrijf $bedrijf)
+    public function insertOne(Bedrijf $bedrijf)
     {
         try {
             $stmt = $this->connection->prepare("INSERT INTO bedrijven (name, role, email, password, phone, beschrijving, photo, logo) VALUES (:userName, :role ,:email, :password, :phone, :beschrijving, :foto, :logo)");
@@ -93,7 +93,7 @@ class CompanyRepository extends Repository
         }
     }
 
-    function getOneById(int $id)
+    public function getOneById(int $id)
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM bedrijven WHERE id = :id LIMIT 1");
@@ -108,7 +108,7 @@ class CompanyRepository extends Repository
         }
     }
 
-    function updateOne(Bedrijf $bedrijf)
+    public function updateOne(Bedrijf $bedrijf)
     {
         try {
             $stmt = $this->connection->prepare("UPDATE bedrijven SET name =:name, email = :email, password = :password, phone = :phone , beschrijving = :beschrijving, photo = :foto, logo = :logo WHERE id = :id");
@@ -130,7 +130,7 @@ class CompanyRepository extends Repository
         }
     }
 
-    function deleteOne(int $id)
+    public function deleteOne(int $id)
     {
         try {
             $stmt = $this->connection->prepare("DELETE FROM bedrijven WHERE id = :id");
@@ -142,13 +142,13 @@ class CompanyRepository extends Repository
     }
 
     // hash the password (currently uses bcrypt)
-    function hashPassword($password)
+    private function hashPassword($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
     // verify the password hash
-    function verifyPassword($input, $hash)
+    private function verifyPassword($input, $hash)
     {
         return password_verify($input, $hash);
     }

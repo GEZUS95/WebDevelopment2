@@ -2,8 +2,8 @@
 
 namespace Repositories;
 
-use Models\ReactieDTO;
-use Models\Recentie;
+use models\ReactieDTO;
+use models\Recentie;
 use PDO;
 use PDOException;
 

@@ -2,13 +2,13 @@
 
 namespace Repositories;
 
-use Models\User;
+use models\User;
 use PDO;
 use PDOException;
 
 class UserRepository extends Repository
 {
-    function checkUsernamePassword($username, $password)
+    public function checkUsernamePassword($username, $password)
     {
         try {
             // retrieve the user with the given username
@@ -35,7 +35,7 @@ class UserRepository extends Repository
         }
     }
 
-    function getAll()
+    public function getAll()
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM users");
@@ -56,7 +56,7 @@ class UserRepository extends Repository
         }
     }
 
-    function getOne(string $email)
+    public function getOne(string $email)
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
@@ -71,7 +71,7 @@ class UserRepository extends Repository
         }
     }
 
-    function insertOne(user $user)
+    public function insertOne(user $user)
     {
         try {
             $stmt = $this->connection->prepare("INSERT INTO users (name, role, email, password, phone) VALUES (:userName, :role ,:email, :password, :phone)");
@@ -90,7 +90,7 @@ class UserRepository extends Repository
         }
     }
 
-    function getOneById(int $id)
+    public function getOneById(int $id)
     {
         try {
             $stmt = $this->connection->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
@@ -107,7 +107,7 @@ class UserRepository extends Repository
         }
     }
 
-    function updateOne(user $user)
+    public function updateOne(user $user)
     {
         try {
             $stmt = $this->connection->prepare("UPDATE users SET name =:name, email = :email, password = :password, phone = :phone WHERE id = :id");
@@ -127,7 +127,7 @@ class UserRepository extends Repository
         }
     }
 
-    function deleteOne(int $id)
+    public function deleteOne(int $id)
     {
         try {
             $stmt = $this->connection->prepare("DELETE FROM users WHERE id = :id");
@@ -139,13 +139,13 @@ class UserRepository extends Repository
     }
 
     // hash the password (currently uses bcrypt)
-    function hashPassword($password)
+    private function hashPassword($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
     // verify the password hash
-    function verifyPassword($input, $hash)
+    private function verifyPassword($input, $hash)
     {
         return password_verify($input, $hash);
     }

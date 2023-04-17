@@ -2,7 +2,7 @@
 
 namespace Services;
 
-use Models\Bedrijf;
+use models\Bedrijf;
 use Repositories\CompanyRepository;
 
 class BedrijfService
