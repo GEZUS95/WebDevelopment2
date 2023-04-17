@@ -24,7 +24,6 @@ class UserController extends Controller
 
     public function login()
     {
-        //TODO: put this in service
         try {
             $postedUser = $this->createObjectFromPostedJson(self::MODEL);
 
