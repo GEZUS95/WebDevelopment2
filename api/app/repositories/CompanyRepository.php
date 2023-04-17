@@ -88,6 +88,7 @@ class CompanyRepository extends Repository
             $stmt->bindParam(':foto', $str);
 
             $stmt->execute();
+            return $this->getOneById($this->connection->lastInsertId());
         } catch (PDOException $e) {
             echo $e;
         }

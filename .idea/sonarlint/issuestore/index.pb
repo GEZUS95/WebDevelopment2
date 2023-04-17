@@ -14,8 +14,6 @@ I
 api/sql/developmentdb.sql,3\1\31290ccf970f69e3a30da2bf87c0341f2577ca47
 E
 api/package-lock.json,3\3\33de1893af0eb9d8a63445c3b9a9d5038e2a0911
-N
-api/app/helpers/AuthHelper.php,9\b\9b9a22f62bf4610bba08c5412f52eca6ffa3ab98
 B
 api/PHP.Dockerfile,9\a\9a25e480e06d5a36b8044efdfd59e5fb9e620876
 >
@@ -144,7 +142,3 @@ F
 api/docker-compose.yml,8\2\820a2a54ae2ca098022d8801d4df58a53bb51c73
 B
 frontend/README.md,6\a\6a3a36e34dda2b89c027f00ac950371695b13c75
-Z
-*api/app/controllers/recentiecontroller.php,1\a\1a4080ecf2dcabbc72117263540f2bad7c784961
-H
-api/app/public/index.php,8\d\8dc9d4f14f00f39fae9876087e5472acb473bbec

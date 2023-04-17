@@ -9,7 +9,7 @@ class BedrijfService
 {
     private CompanyRepository $repository;
 
-    function __construct()
+    public function __construct()
     {
         $this->repository = new CompanyRepository;
     }

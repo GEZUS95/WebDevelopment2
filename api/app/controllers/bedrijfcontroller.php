@@ -14,7 +14,7 @@ class BedrijfController extends Controller
     private const NLI = "Not Logged In";
 
     // initialize services
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->service = new BedrijfService();
@@ -42,8 +42,7 @@ class BedrijfController extends Controller
     public function getAllCompanys()
     {
         try {
-            $res = $this->service->getAll();
-            $this->respond($res);
+            $this->respond($this->service->getAll());
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
         }
@@ -53,8 +52,7 @@ class BedrijfController extends Controller
     {
         try {
             $postedCompany = $this->createObjectFromPostedJson(self::MODEL);
-            $this->service->insertOne($postedCompany);
-            $this->respond($postedCompany);
+            $this->respond($this->service->insertOne($postedCompany));
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
         }
@@ -85,8 +83,7 @@ class BedrijfController extends Controller
     public function getOneById($id)
     {
         try {
-            $res = $this->service->getOneById($id);
-            $this->respond($res);
+            $this->respond($this->service->getOneById($id));
         } catch (Exception $e) {
             $this->respondWithError(500, $e->getMessage());
         }
@@ -101,8 +98,7 @@ class BedrijfController extends Controller
 //                $this->respondWithError(403, "Not the correct role");
 //            } else {
                 try {
-                    $res = $this->service->deleteOne($id);
-                    $this->respond($res);
+                    $this->respond($this->service->deleteOne($id));
                 } catch (Exception $e) {
                     $this->respondWithError(500, $e->getMessage());
                 }

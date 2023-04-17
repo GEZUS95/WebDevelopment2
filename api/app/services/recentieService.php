@@ -10,7 +10,7 @@ class RecentieService
 {
     private RecentieRepository $repository;
 
-    function __construct()
+    public function __construct()
     {
         $this->repository = new RecentieRepository;
     }
@@ -21,12 +21,12 @@ class RecentieService
         return $this->repository->getAll();
     }
 
-    function insertOne(Recentie $review)
+    public function insertOne(Recentie $review)
     {
         return $this->repository->insertOne($review);
     }
 
-    function getOne($id)
+    public function getOne($id)
     {
         return $this->repository->getOne($id);
     }
