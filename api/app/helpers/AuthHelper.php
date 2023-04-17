@@ -19,7 +19,7 @@ class AuthHelper
 
     public function checkAuthorization()
     {
-        if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
+        if (!isset($_SERVER['HTTP_AUTHORIZATION'])) {
             return false;
         }
 
@@ -54,7 +54,7 @@ class AuthHelper
     {
         try {
             return JWT::decode($jwt, new Key(self::PRIVATEKEY, 'HS256'));
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return $e;
         }
     }

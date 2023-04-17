@@ -45,7 +45,7 @@ class UserRepository extends Repository
 
             $users = $stmt->fetchAll();
 
-            foreach ($users as $user){
+            foreach ($users as $user) {
                 $user->password = "";
             }
 

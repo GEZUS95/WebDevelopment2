@@ -11,7 +11,7 @@ class RecentieController extends Controller
     private const NLI = "Not Logged In";
 
     // initialize services
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->service = new RecentieService();

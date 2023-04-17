@@ -38,7 +38,7 @@ class Controller
         $data = json_decode($json);
         $object = new $className();
         foreach ($data as $key => $value) {
-            if(is_object($value)) {
+            if (is_object($value)) {
                 continue;
             }
             $object->{$key} = $value;
