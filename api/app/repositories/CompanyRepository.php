@@ -2,7 +2,7 @@
 
 namespace Repositories;
 
-use models\Bedrijf;
+use Models\Bedrijf;
 use PDO;
 use PDOException;
 

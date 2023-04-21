@@ -2,7 +2,7 @@
 
 namespace Repositories;
 
-use models\User;
+use Models\User;
 use PDO;
 use PDOException;
 

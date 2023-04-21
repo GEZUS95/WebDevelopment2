@@ -4,6 +4,7 @@
 
 $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
+var_dump($baseDir);
 
 return array(
     'Services\\' => array($baseDir . '/services'),

@@ -4,10 +4,11 @@ namespace Models;
 class Recentie
 {
     public int $id;
-    public int $bedrijfsId;
+    public int $companyId;
     public int $userId;
     public string $title;
-    public string $beschrijving;
+    public string $description;
     public int $rating;
-    public ReactieDTO $reactie;
+    public string $reaction;
+
 }

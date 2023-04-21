@@ -75,8 +75,8 @@ CREATE TABLE `recenties`
 
 INSERT INTO `recenties` (`id`, `companyId`, `userId`, `title`, `description`, `rating`, `reaction`)
 VALUES (2, 1, 1, 'testing', 'dit is weer een test ', 5, 'treafvadsv errasdevaerv dsraevsd ervsdvaeva'),
-       (3, 1, 1, 'test 2', 'teadfa ', 5, ''),
-       (4, 1, 3, 'test', 'testestest', 2, '');
+       (3, 1, 1, 'test 2', 'teadfa ', 5, ' '),
+       (4, 1, 3, 'test', 'testestest', 2, ' ');
 
 -- --------------------------------------------------------
 

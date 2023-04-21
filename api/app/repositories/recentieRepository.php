@@ -2,8 +2,9 @@
 
 namespace Repositories;
 
-use models\ReactieDTO;
-use models\Recentie;
+use Exception;
+use Models\ReactieDTO;
+use Models\Recentie;
 use PDO;
 use PDOException;
 
@@ -11,6 +12,10 @@ class RecentieRepository extends Repository
 {
     public function getAll()
     {
+//        if (!class_exists(Recentie::class)) {
+//            throw new Exception('Recentie class not found');
+//        }
+
         try {
             $stmt = $this->connection->prepare("SELECT * FROM recenties");
             $stmt->execute();
@@ -44,12 +49,12 @@ class RecentieRepository extends Repository
         try {
             $stmt = $this->connection->prepare("INSERT INTO recenties (companyId, userId, title, description, rating, reaction) VALUES (:companyId, :userId, :title, :description, :rating, :reaction)");
 
-            $stmt->bindParam(':companyId', $review->bedrijfsId);
+            $stmt->bindParam(':companyId', $review->companyId);
             $stmt->bindParam(':userId', $review->userId);
             $stmt->bindParam(':title', $review->title);
-            $stmt->bindParam(':description', $review->beschrijving);
+            $stmt->bindParam(':description', $review->description);
             $stmt->bindParam(':rating', $review->rating);
-            $stmt->bindParam(':reaction', $review->reactie);
+            $stmt->bindParam(':reaction', $review->reaction);
 
             $stmt->execute();
             return $this->getOne($this->connection->lastInsertId());

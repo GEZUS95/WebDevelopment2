@@ -45,7 +45,6 @@ export default new Vuex.Store({
         setToken: ({ commit}, { token }) => {
             commit('SET_TOKEN', token);
             // set auth header
-
         },
         setUser: ({ commit}, { user }) => {
             commit('SET_USER', user);
