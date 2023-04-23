@@ -125,7 +125,11 @@ class CompanyRepository extends Repository
             $stmt->bindParam(':logo', $str);
             $stmt->bindParam(':foto', $str);
 
-            return $stmt->execute();
+            $stmt->execute();
+
+            $company = $this->getOneById($bedrijf->id);
+            $company->password = "";
+            return $company;
         } catch (PDOException $e) {
             echo $e;
         }

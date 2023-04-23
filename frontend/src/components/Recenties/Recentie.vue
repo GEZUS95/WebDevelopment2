@@ -75,7 +75,7 @@ export default {
                 .get('bedrijven/' + this.recentie.companyId)
                 .then((response) => {
                         this.bedrijf = response.data
-                    console.log(this.bedrijf.id)
+                    // console.log(this.bedrijf.id)
                     }
                 )
         },

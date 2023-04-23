@@ -51,6 +51,10 @@ class BedrijfService
 
     public function updateOne(Bedrijf $bedrijf)
     {
+        $company = $this->repository->getOneById($bedrijf->id);
+        if ($company->password === '') {
+            $bedrijf->password = $company->password;
+        }
         return $this->repository->updateOne($bedrijf);
     }
 

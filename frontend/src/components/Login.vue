@@ -52,6 +52,11 @@ export default {
           .post('login', {name: this.username, password: this.password})
           .then((res) => {
             const resdata = res.data.token
+              if (resdata == null) {
+                this.errorMessage = "Gebruikersnaam of wachtwoord is onjuist"
+                  stop();
+                console.log(this.errorMessage)
+              }
             this.$store.commit('SET_TOKEN', resdata)
             localStorage.setItem('token', resdata)
             console.log("TOKEN: " + this.$store.getters.isLoggedIn)

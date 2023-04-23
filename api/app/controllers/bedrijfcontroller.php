@@ -25,7 +25,7 @@ class BedrijfController extends Controller
         try {
             $postedCompany = $this->createObjectFromPostedJson(self::MODEL);
 
-            $Company = $this->service->checkUsernamePassword($postedCompany->username, $postedCompany->password);
+            $Company = $this->service->checkUsernamePassword($postedCompany->name, $postedCompany->password);
 
             if (!$Company) {
                 $this->respondWithError(401, "Invalid Credentials");
@@ -64,19 +64,16 @@ class BedrijfController extends Controller
         if (!$this->auth->checkAuthorization()) {
             $this->respondWithError(401, self::NLI);
         } else {
-
             try {
                 $postedCompany = $this->createObjectFromPostedJson(self::MODEL);
-//                if ($this->auth->checkAuthorization()->id != $postedCompany->id) {
-//                    $this->respondWithError(403, self::NCU);
-//                } else {
-                    $this->service->updateOne($postedCompany);
-                    $this->respond($postedCompany);
-
+                if ($this->auth->checkAuthorization()->data->id != $postedCompany->id) {
+                    $this->respondWithError(403, self::NCU);
+                } else {
+                    $this->respond($this->service->updateOne($postedCompany));
+                }
             } catch (Exception $e) {
                 $this->respondWithError(500, $e->getMessage());
             }
-
         }
     }
 

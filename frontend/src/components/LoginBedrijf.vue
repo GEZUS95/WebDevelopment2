@@ -50,13 +50,17 @@ export default {
     // login through a store action
     async login() {
       await axios
-          .post('bedrijf/login', {username: this.username, password: this.password})
+          .post('bedrijf/login', {name: this.username, password: this.password})
           .then((res) => {
             const resdata = res.data.token
-            this.$store.commit('SET_TOKEN', resdata)
-            localStorage.setItem('token', JSON.stringify(resdata))
-            console.log("TOKEN:")
-            console.log(this.$store.getters.isLoggedIn)
+              console.log(res)
+              if (resdata != null) {
+                  this.$store.commit('SET_TOKEN', resdata)
+                  localStorage.setItem('token', JSON.stringify(resdata))
+                  console.log("TOKEN:")
+                  console.log(this.$store.getters.isLoggedIn)
+              }
+
 
           })
       await axios
