@@ -75,7 +75,6 @@ export default {
                 .get('bedrijven/' + this.recentie.companyId)
                 .then((response) => {
                         this.bedrijf = response.data
-                    // console.log(this.bedrijf.id)
                     }
                 )
         },
@@ -95,6 +94,7 @@ export default {
             event.preventDefault()
             try {
                 axios.post('recenties/' + this.recentie['id'], {'beschrijving': this.form.reaction})
+                    .then(this.$router.push('/'))
             } catch (error) {
                 this.error = error;
             }
@@ -116,7 +116,7 @@ export default {
         delete() {
             axios
                 .delete('/recenties/' + this.recentie['id'])
-                .then(this.$router.go)
+                .then(this.$router.push('/'))
         }
     },
 }
