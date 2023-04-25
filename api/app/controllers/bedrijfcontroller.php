@@ -91,15 +91,15 @@ class BedrijfController extends Controller
         if (!$this->auth->checkAuthorization()) {
             $this->respondWithError(401, self::NLI);
         } else {
-//            if (!$this->auth->isRole("Admin")) {
-//                $this->respondWithError(403, "Not the correct role");
-//            } else {
+            if (!$this->auth->isRole("Admin")) {
+                $this->respondWithError(403, "Not the correct role");
+            } else {
                 try {
                     $this->respond($this->service->deleteOne($id));
                 } catch (Exception $e) {
                     $this->respondWithError(500, $e->getMessage());
                 }
-//            }
+            }
         }
     }
 

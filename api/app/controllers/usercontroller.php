@@ -106,15 +106,15 @@ class UserController extends Controller
         if (!$this->auth->checkAuthorization()) {
             $this->respondWithError(401, self::NLI);
         } else {
-//            if ((!$this->auth->isRole("Admin")) || (!$this->auth->isRole("User"))) {
-//                $this->respondWithError(403, self::NCR);
-//            } else {
-            try {
-                $this->respond($this->service->deleteOne($id));
-            } catch (Exception $e) {
-                $this->respondWithError(500, $e->getMessage());
+            if ((!$this->auth->isRole("Admin")) || (!$this->auth->isRole("User"))) {
+                $this->respondWithError(403, self::NCR);
+            } else {
+                try {
+                    $this->respond($this->service->deleteOne($id));
+                } catch (Exception $e) {
+                    $this->respondWithError(500, $e->getMessage());
+                }
             }
-//            }
         }
     }
 
